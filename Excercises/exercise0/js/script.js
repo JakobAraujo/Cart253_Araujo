@@ -58,7 +58,7 @@ function setup() {
   // Lips
   ellipse(250,320,100,25);
   // Lip divider colour and size
-  stroke(255,120,120);
+  stroke(100,120,120);
   strokeWeight(4);
   // Lip divider
   line(200,320,300,320);
