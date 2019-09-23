@@ -15,6 +15,10 @@ let squareX;
 let squareY;
 let squareSize = 100;
 
+//The current position of the text
+let Tx = 0;
+let Ty = 320;
+
 
 // preload()
 //
@@ -73,4 +77,19 @@ function draw() {
   fill(0,0,255,10);
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
+  
+  
+  //Activate the text
+  
+  if( squareY <= 0){
+    background(69);
+  //Super Important Text and its Colour:
+  fill(0,255,0);
+  text("Everything was beautiful and nothing hurt", Tx, Ty, 100, 100);
+  
+
+  
+  //Move text to the right
+  Tx = Tx + 1;
+  }
 }
