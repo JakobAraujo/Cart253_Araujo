@@ -7,9 +7,6 @@ A simple dodging game with keyboard controls
 
 ******************************************************/
 
-//Score. Dictates what number shows on the scoreboard.
-let score = 0;
-
 // The position and size of our avatar circle
 let avatarX;
 let avatarY;
@@ -66,7 +63,7 @@ function draw() {
   textSize(25)
   
   //Displays the number of doges the player has preformed
-  text(score, 250, 50, 50, 50);
+  text(dodges, 250, 50, 50, 50);
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -127,7 +124,6 @@ function draw() {
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
-    score = 0;
   }
 
   // Check if the enemy has moved all the way across the screen
@@ -136,13 +132,18 @@ function draw() {
     dodges = dodges + 1;
     // Tell them how many dodges they have made
     console.log(dodges + " DODGES!");
-    score = score + 1;
     // Reset the enemy's position to the left at a random height
     enemyX = 0;
     enemyY = random(0,height);
   }
 
-
+  //Increases enemy's speed in proportion to the dodges
+  enemySpeed = enemySpeed + dodges;
+  
+  //Regulates speed of the enemy
+  if(enemySpeed >= 25){
+   enemySpeed = 25 
+  }
   
   
   // Display the number of successful dodges in the console
