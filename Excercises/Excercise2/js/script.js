@@ -29,6 +29,13 @@ let enemyVX = 5;
 // How many dodges the player has made
 let dodges = 0;
 
+
+//The Red value of the background
+let backGroundR = 255;
+
+//The Blue value of the background
+let backgroundB = 220;
+
 // setup()
 //
 // Make the canvas, position the avatar and anemy
@@ -54,7 +61,9 @@ function setup() {
 // game over situations.
 function draw() {
   // A pink background
-  background(255,220,220);
+  background(backGroundR,220,backgroundB);
+  
+  fill(255, 255, 0);
   
   //Font of the text
   textFont('Georgia');
@@ -113,6 +122,9 @@ function draw() {
     avatarY = height/2;
     // Reset the dodge counter
     dodges = 0;
+    //Resets enemy size and speed to default.
+    enemySize = 50;
+    enemySpeed = 5;
   }
 
   // Check if the avatar has gone off the screen (cheating!)
@@ -124,6 +136,12 @@ function draw() {
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
+    
+    //Resets enemy size and speed to default.
+    enemySize = 50;
+    enemySpeed = 5;
+    
+    
   }
 
   // Check if the enemy has moved all the way across the screen
@@ -137,26 +155,56 @@ function draw() {
     enemyY = random(0,height);
   }
 
-  //Increases enemy's speed in proportion to the dodges
+   
+  // Display the number of successful dodges in the console
+  console.log(dodges);
+  
+  
+  //Increases enemy's speed and size in proportion to the dodges
   enemySpeed = enemySpeed + dodges;
+  enemySize = enemySize + dodges
   
   //Regulates speed of the enemy
   if(enemySpeed >= 25){
    enemySpeed = 25 
   }
+  if(enemySize >= 80){
+   enemySize = 80 
+  }
   
-  
-  // Display the number of successful dodges in the console
-  console.log(dodges);
+  //Changes background colour (RED) based on Player's Y position
+  if(avatarY < 250){
+   backGroundR = backGroundR - 5 
 
-  // The player is black
-  fill(0);
+  }
+  
+  if(avatarY > 250){
+   backGroundR = backGroundR + 5
+
+  }
+  
+  //Changes background colour (BLUE) based on Player's X position
+  if(avatarX < 250){
+   backgroundB = backgroundB - 5
+
+  }
+  
+  if(avatarX > 250){
+   backgroundB = backgroundB + 5 
+
+  }
+
+
+  
+  
+  // The player is green
+  fill(0, 255, 0);
   // Draw the player as a circle
   ellipse(avatarX,avatarY,avatarSize,avatarSize);
 
-  // The enemy is red
-  fill(255,0,0);
-  // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
-
+  // The enemy is purple
+  fill(50,0,50);
+  // Draw the enemy as a rectangle 
+  rect(enemyX,enemyY,enemySize,enemySize);
+  
 }
