@@ -16,6 +16,8 @@ let windowMeasureW;
 //Stores the number of pixels of the windows height.
 let windowMeasureH
 
+let fakeImage;
+
 
 // Position and image of the sausage dog we're searching for
 let targetX;
@@ -46,6 +48,9 @@ let gameOver = false;
 // Loads the target and decoy images before the program starts
 function preload() {
   targetImage = loadImage("assets/images/animals-target.png");
+  //The image of the Sausage Dog but in the top right window
+  fakeImage = loadImage("assets/images/animals-target.png");
+
 
   decoyImage1 = loadImage("assets/images/animals-01.png");
   decoyImage2 = loadImage("assets/images/animals-02.png");
@@ -122,6 +127,19 @@ function setup() {
 
   // And draw it (because it's the last thing drawn, it will always be on top)
   image(targetImage,targetX,targetY);
+
+
+  //Shows the portait of the Sausage Dog.
+  fill(255);
+  noStroke();
+  rectMode(CENTER);
+  rect(windowMeasureW - 95, windowMeasureH / 11, 150, 150);
+
+
+  //Set location of Suasage Dogs picture in the top right corner
+  //(Cannot be clicked on however)
+
+  image(fakeImage, windowMeasureW - 95, windowMeasureH / 11);
 }
 
 
@@ -131,11 +149,7 @@ function setup() {
 // otherwise nothing (all the gameplay stuff is in mousePressed())
 function draw() {
 
-  //Shows the portait of the Sausage Dog.
-  fill(0);
-  noStroke();
-  rectMode(CENTER);
-  rect(windowMeasureW - 75, windowMeasureH / 11, 100, 100);
+
 
   if (gameOver) {
     // Prepare our typography
