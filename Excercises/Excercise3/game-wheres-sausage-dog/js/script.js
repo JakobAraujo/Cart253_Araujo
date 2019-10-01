@@ -11,6 +11,11 @@ the visual noise of other animals.
 Animal images from:
 https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal-icon-set/
 ******************************************************************************/
+//Stores the number of pixels of the windows width.
+let windowMeasureW;
+//Stores the number of pixels of the windows height.
+let windowMeasureH
+
 
 // Position and image of the sausage dog we're searching for
 let targetX;
@@ -59,6 +64,11 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
+  windowMeasureH = windowHeight;
+  windowMeasureW = windowWidth;
+  console.log(windowMeasureW);
+  console.log(windowMeasureH);
+
   createCanvas(windowWidth,windowHeight);
   background("#ffff00");
   imageMode(CENTER);
@@ -120,6 +130,13 @@ function setup() {
 // Displays the game over screen if the player has won,
 // otherwise nothing (all the gameplay stuff is in mousePressed())
 function draw() {
+
+  //Shows the portait of the Sausage Dog.
+  fill(0);
+  noStroke();
+  rectMode(CENTER);
+  rect(windowMeasureW - 75, windowMeasureH / 11, 100, 100);
+
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
@@ -137,6 +154,7 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
   }
 }
 
