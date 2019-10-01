@@ -16,6 +16,7 @@ let windowMeasureW;
 //Stores the number of pixels of the windows height.
 let windowMeasureH
 
+//Copy of the Sausage Dog that the player cannot click on.
 let fakeImage;
 
 
@@ -129,7 +130,7 @@ function setup() {
   image(targetImage,targetX,targetY);
 
 
-  //Shows the portait of the Sausage Dog.
+  // Sets the background for the portait of the Sausage Dog.
   fill(255);
   noStroke();
   rectMode(CENTER);
@@ -140,6 +141,10 @@ function setup() {
   //(Cannot be clicked on however)
 
   image(fakeImage, windowMeasureW - 95, windowMeasureH / 11);
+
+  //Text that goes under the Sausage Dog.
+  fill(0);
+  text("Find this Long Boy.", windowMeasureW - 140, windowMeasureH / 5);
 }
 
 
@@ -148,6 +153,7 @@ function setup() {
 // Displays the game over screen if the player has won,
 // otherwise nothing (all the gameplay stuff is in mousePressed())
 function draw() {
+
 
 
 
@@ -168,6 +174,7 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
 
   }
 }
