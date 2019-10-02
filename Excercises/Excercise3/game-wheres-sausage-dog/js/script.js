@@ -14,10 +14,13 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 //Stores the number of pixels of the windows width.
 let windowMeasureW;
 //Stores the number of pixels of the windows height.
-let windowMeasureH
+let windowMeasureH;
 
 //Copy of the Sausage Dog that the player cannot click on.
 let fakeImage;
+
+//Size of dog
+let dogsize = 100;
 
 
 // Position and image of the sausage dog we're searching for
@@ -39,7 +42,7 @@ let decoyImage10;
 
 // The number of decoys to show on the screen, randomly
 // chosen from the decoy images
-let numDecoys = 100;
+let numDecoys = 150;
 
 // Keep track of whether they've won
 let gameOver = false;
@@ -70,10 +73,15 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
+
+  //Gives the windowMeasure variabels the number of pixels
+  //for windowheight and width and logs them in the console.
   windowMeasureH = windowHeight;
   windowMeasureW = windowWidth;
   console.log(windowMeasureW);
   console.log(windowMeasureH);
+
+
 
   createCanvas(windowWidth,windowHeight);
   background("#ffff00");
@@ -126,8 +134,7 @@ function setup() {
   targetX = random(0,width);
   targetY = random(0,height);
 
-  // And draw it (because it's the last thing drawn, it will always be on top)
-  image(targetImage,targetX,targetY);
+
 
 
   // Sets the background for the portait of the Sausage Dog.
@@ -143,8 +150,9 @@ function setup() {
   image(fakeImage, windowMeasureW - 95, windowMeasureH / 11);
 
   //Text that goes under the Sausage Dog.
-  fill(0);
-  text("Find this Long Boy.", windowMeasureW - 140, windowMeasureH / 5);
+  fill(0, 255, 0);
+  textSize (38);
+  text("Find the Long Boy.", windowMeasureW /2, windowMeasureH / 11);
 }
 
 
@@ -154,8 +162,10 @@ function setup() {
 // otherwise nothing (all the gameplay stuff is in mousePressed())
 function draw() {
 
-
-
+  noStroke();
+  // And draw it (because it's the last thing drawn, it will always be on top)
+  //Made the dog much smaller. Good luck finging them now!
+  image(targetImage,targetX,targetY, dogsize, dogsize);
 
   if (gameOver) {
     // Prepare our typography
@@ -174,6 +184,12 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
+    //Moves the dog after the palyer has won
+    targetX ++;
+    targetY = targetX - 2;
+
+    dogsize ++;
 
 
   }
