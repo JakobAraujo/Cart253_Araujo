@@ -42,6 +42,7 @@ let preyRadius = 25;
 let preyVX;
 let preyVY;
 let preyMaxSpeed = 0.02;
+
 // Prey health
 let preyHealth;
 let preyMaxHealth = 100;
@@ -114,6 +115,7 @@ function draw() {
   }
   else {
     showGameOver();
+    resetVariables();
   }
 }
 
@@ -144,11 +146,14 @@ function handleInput() {
   }
   //Check for sprint
   if(keyIsDown(SHIFT)) {
-    playerMaxSpeed = 20;
+    playerMaxSpeed = playerMaxSpeed + 2;
+    if(playerMaxSpeed > 4){
+      playerMaxSpeed = 4;
+    }
 
   }
   else{
-    playerMaxSpeed = 10;
+    playerMaxSpeed = 2;
   }
 
 }
@@ -224,6 +229,19 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten = preyEaten + 1;
+
+      //Shrinks Prey size.
+      preyRadius = preyRadius - preyEaten;
+      //Grows Player size.
+      playerRadius = playerRadius + preyEaten;
+      if(playerRadius > 50){
+        playerRadius = 50;
+      }
+      //Slows Player per prey eaten.
+      playerMaxSpeed = playerMaxSpeed - preyEaten;
+      if(playerMaxSpeed < 1){
+        playerMaxSpeed = 1;
+      }
     }
   }
 }
@@ -264,6 +282,10 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
+  //Makes sure the prey doesn't get too small
+  if(preyRadius < 3){
+    preyRadius = 3;
+  }
   fill(preyFill, preyHealth);
   ellipse(preyX, preyY, preyRadius * 2);
 }
@@ -290,4 +312,14 @@ function showGameOver() {
   gameOverText = gameOverText + "before you died."
   // Display it in the centre of the screen
   text(gameOverText, width / 2, height / 2);
+}
+//Resets variables after the game is over.
+function resetVariables(){
+  if(gameOver == True){
+    preyRadius = 25;
+  }
+  if(gameOver == True){
+    playerRadius = 25;
+  }
+
 }
