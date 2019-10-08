@@ -150,6 +150,9 @@ function handleInput() {
     if(playerMaxSpeed > 4){
       playerMaxSpeed = 4;
     }
+    if(playerMaxSpeed < 1){
+      playerMaxSpeed = 1;
+    }
 
   }
   else{
@@ -232,16 +235,14 @@ function checkEating() {
 
       //Shrinks Prey size.
       preyRadius = preyRadius - preyEaten;
+      //Lets prey learn camoflage
+
       //Grows Player size.
       playerRadius = playerRadius + preyEaten;
-      if(playerRadius > 50){
-        playerRadius = 50;
-      }
+
       //Slows Player per prey eaten.
       playerMaxSpeed = playerMaxSpeed - preyEaten;
-      if(playerMaxSpeed < 1){
-        playerMaxSpeed = 1;
-      }
+
     }
   }
 }
@@ -294,6 +295,10 @@ function drawPrey() {
 //
 // Draw the player as an ellipse with alpha value based on health
 function drawPlayer() {
+  //Makes sure the player doesn't get too big.
+  if(playerRadius > 50){
+    playerRadius = 50;
+  }
   fill(playerFill, playerHealth);
   ellipse(playerX, playerY, playerRadius * 2);
 }
@@ -317,9 +322,8 @@ function showGameOver() {
 function resetVariables(){
   if(gameOver == True){
     preyRadius = 25;
-  }
-  if(gameOver == True){
     playerRadius = 25;
+    playerMaxSpeed = 2;
   }
 
 }
