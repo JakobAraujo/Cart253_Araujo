@@ -57,8 +57,7 @@ let preyEaten = 0;
 //
 // Sets up the basic elements of the game
 function setup() {
-  vy = random(0, 25);
-  vx = random(10, 30)
+
   createCanvas(500, 500);
   noStroke();
 
@@ -71,6 +70,10 @@ function setup() {
 //
 // Initialises prey's position, velocity, and health
 function setupPrey() {
+  //For noise
+  vy = random(0, 25);
+  vx = random(10, 30)
+
   preyX = width / 5;
   preyY = height / 2;
   preyVX = -preyMaxSpeed;
@@ -139,6 +142,15 @@ function handleInput() {
   else {
     playerVY = 0;
   }
+  //Check for sprint
+  if(keyIsDown(SHIFT)) {
+    playerMaxSpeed = 20;
+
+  }
+  else{
+    playerMaxSpeed = 10;
+  }
+
 }
 
 // movePlayer()
@@ -220,15 +232,8 @@ function checkEating() {
 //
 // Moves the prey based on random velocity changes
 function movePrey() {
-  // Change the prey's velocity at random intervals
-  // random() will be < 0.05 5% of the time, so the prey
-  // will change direction on 5% of frames
+  // Changes the prey's velocity based on Perlin noise.
 
-    // Set velocity based on random values to get a new direction
-    // and speed of movement
-    //
-    // Use map() to convert from the 0-1 range of the random() function
-    // to the appropriate range of velocities for the prey
 
     preyVX = width * map(noise(vx), 0, 1, -preyMaxSpeed, preyMaxSpeed);
     preyVY = height * map(noise(vy), 0, 1, -preyMaxSpeed, preyMaxSpeed);
