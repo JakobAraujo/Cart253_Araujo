@@ -15,6 +15,10 @@ random movement, screen wrap.
 
 ******************************************************/
 
+//Noise
+let vx = 0.01;
+let vy = 0.5;
+
 // Track whether the game is over
 let gameOver = false;
 
@@ -37,7 +41,7 @@ let preyY;
 let preyRadius = 25;
 let preyVX;
 let preyVY;
-let preyMaxSpeed = 4;
+let preyMaxSpeed = 0.02;
 // Prey health
 let preyHealth;
 let preyMaxHealth = 100;
@@ -53,8 +57,9 @@ let preyEaten = 0;
 //
 // Sets up the basic elements of the game
 function setup() {
+  vy = random(0, 25);
+  vx = random(10, 30)
   createCanvas(500, 500);
-
   noStroke();
 
   // We're using simple functions to separate code out
@@ -218,15 +223,17 @@ function movePrey() {
   // Change the prey's velocity at random intervals
   // random() will be < 0.05 5% of the time, so the prey
   // will change direction on 5% of frames
-  if (random() < 0.05) {
+
     // Set velocity based on random values to get a new direction
     // and speed of movement
     //
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(random(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
-    preyVY = map(random(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
-  }
+
+    preyVX = width * map(noise(vx), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    preyVY = height * map(noise(vy), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    vy = vy + 0.03;
+    vx = vx + 0.02;
 
   // Update prey position based on velocity
   preyX = preyX + preyVX;
