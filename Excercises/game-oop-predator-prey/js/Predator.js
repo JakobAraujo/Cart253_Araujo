@@ -69,9 +69,11 @@ class Predator {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
+    if (bush.occupied = false){
     // Update health
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
+  }
     // Handle wrapping
     this.handleWrapping();
   }
