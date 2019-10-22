@@ -61,5 +61,7 @@ function draw() {
   zebra.display();
   bee.display();
 
+  bush.hiding();
+
 
 }

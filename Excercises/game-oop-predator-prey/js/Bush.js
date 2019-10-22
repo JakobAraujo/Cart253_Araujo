@@ -15,7 +15,7 @@ class Bush {
     this.radius = radius;
   }
 
-hiding(){
+hiding(predator){
   let d = dist(this.x, this.y, predator.x, predator.y);
   if (d < this.radius + predator.radius) {
       this.occupied = true;

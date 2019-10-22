@@ -65,14 +65,18 @@ class Predator {
   // Updates the position according to velocity
   // Lowers health (as a cost of living)
   // Handles wrapping
-  move() {
+  move(bush) {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-    if (bush.occupied = false){
+
+  if (bush.occupied = false){
     // Update health
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
+  } else {
+    this.health = this.health;
+
   }
     // Handle wrapping
     this.handleWrapping();
