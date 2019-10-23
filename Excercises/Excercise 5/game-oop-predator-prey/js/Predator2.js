@@ -26,6 +26,10 @@ class PredatorII {
     this.leftKey = 65;
     this.rightKey = 68;
 
+    this.shiftKey = 16;
+
+
+
     //Count of pray eaten.
     this.preyEaten = 0;
   }
@@ -54,6 +58,14 @@ class PredatorII {
     }
     else {
       this.vy = 0;
+    }
+
+    //Sprint
+    if(keyIsDown(this.shiftKey)){
+      this.speed = 8;
+    }
+    else{
+      this.speed = 5;
     }
   }
 
@@ -134,6 +146,6 @@ class PredatorII {
     fill(0,0,255);
     textSize(24);
     textAlign(RIGHT);
-    text(this.preyEaten,200, 100); 
+    text(this.preyEaten,200, 100);
   }
 }

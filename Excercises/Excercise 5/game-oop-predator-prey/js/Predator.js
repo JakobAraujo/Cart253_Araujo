@@ -31,6 +31,9 @@ class Predator {
     this.downKey = DOWN_ARROW;
     this.leftKey = LEFT_ARROW;
     this.rightKey = RIGHT_ARROW;
+
+    this.spaceBar = 32;
+
     //Count of pray eaten.
     this.preyEaten = 0;
   }
@@ -59,6 +62,13 @@ class Predator {
     }
     else {
       this.vy = 0;
+    }
+    //Sprint
+    if(keyIsDown(this.spaceBar)){
+      this.speed = 8;
+    }
+    else{
+      this.speed = 5;
     }
   }
 
