@@ -5,6 +5,7 @@
 // The predator chases the prey using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
 
+
 // Our predator
 let tiger;
 let wolf;
@@ -58,4 +59,7 @@ function draw() {
   antelope.display();
   zebra.display();
   bee.display();
+
+  tiger.score();
+  wolf.score();
 }

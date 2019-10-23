@@ -31,6 +31,8 @@ class Predator {
     this.downKey = DOWN_ARROW;
     this.leftKey = LEFT_ARROW;
     this.rightKey = RIGHT_ARROW;
+    //Count of pray eaten.
+    this.preyEaten = 0;
   }
 
   // handleInput
@@ -114,6 +116,7 @@ class Predator {
       prey.health -= this.healthGainPerEat;
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
+        this.preyEaten += 1;
         prey.reset();
       }
     }
@@ -130,5 +133,13 @@ class Predator {
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
     pop();
-  }
+   }
+score(){
+  noStroke();
+  fill(255,0,0);
+  textSize(24);
+  textAlign(LEFT);
+  text(this.preyEaten,100, 100) //${units}
+}
+
 }
