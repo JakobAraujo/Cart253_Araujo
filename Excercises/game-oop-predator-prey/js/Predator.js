@@ -72,11 +72,13 @@ class Predator {
 
   if (bush.occupied = 0){
     // Update health
+    console.log("69"); //BUG ---> this doesnt log for some reason <--- BUG
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
   } else {
     this.health = this.health;
-    
+    console.log("96");
+
   }
     // Handle wrapping
     this.handleWrapping();
