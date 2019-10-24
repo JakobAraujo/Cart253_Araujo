@@ -42,7 +42,7 @@ function draw() {
 
 
   // Move all the "animals"
-  tiger.move();
+  tiger.move(bush);
   antelope.move();
   zebra.move();
   bee.move();
@@ -61,7 +61,7 @@ function draw() {
   zebra.display();
   bee.display();
 
-  bush.hiding();
+  bush.hiding(tiger);
 
 
 }

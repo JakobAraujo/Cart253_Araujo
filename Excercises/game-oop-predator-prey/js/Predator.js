@@ -70,13 +70,13 @@ class Predator {
     this.x += this.vx;
     this.y += this.vy;
 
-  if (bush.occupied = false){
+  if (bush.occupied = 0){
     // Update health
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
   } else {
     this.health = this.health;
-
+    
   }
     // Handle wrapping
     this.handleWrapping();
