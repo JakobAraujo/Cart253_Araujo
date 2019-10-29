@@ -23,7 +23,7 @@ let bee;
 //
 // Sets up a canvas
 // Creates objects for the predator and three prey
-function.setup() {
+function.setup() { //////FIXED
   createCanvas(windowWidth, windowHeight);
   tiger = new Predator(100, , 100, 5, color(200, 200, 0), 40);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
@@ -36,7 +36,7 @@ function.setup() {
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
   // Clear the background to black
-  backgroun(0);
+  background(0); //////FIXED
 
   // Handle input for the tiger
 
