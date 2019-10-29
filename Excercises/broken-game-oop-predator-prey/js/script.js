@@ -53,7 +53,7 @@ function draw() {
 
   // Display all the "animals"
   tiger.display();
-  antelop.display();
+  antelope.display(); /////FIXED
   zebra.display(); /////FIXED
   bee.display(); /////FIXED
 }
