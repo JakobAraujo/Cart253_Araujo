@@ -57,7 +57,7 @@ class Predator {
       this.vy = this.speed; /////FIXED
     }
     else if (keyIsDown(this.downKey)) { /////FIXED
-      this.vy = this.speed;
+      this.vy = -this.speed; /////FIXED
     }
     else {
       this.vy = 0;
