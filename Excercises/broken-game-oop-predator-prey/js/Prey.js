@@ -81,7 +81,7 @@ class Prey { /////FIXED
       noStroke();
       fill(this.fillColor);
               /////FIXED
-      ellipse(this.x, this.y, this.radius * "two");
+      ellipse(this.x, this.y, this.radius * 2); /////FIXED
       pop();
     }
 
