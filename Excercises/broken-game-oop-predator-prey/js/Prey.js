@@ -48,7 +48,7 @@ class Prey { /////FIXED
     this.tx += 0.01;
     this.ty += 0.01;
     // Handle wrapping
-                          /////FIXED
+    this.handleWrapping();
   } /////FIXED
 
 
@@ -81,7 +81,7 @@ class Prey { /////FIXED
       push();
       noStroke();
       fill(this.fillColor);
-            this.radius = this.health; 
+      this.radius = this.health;
       ellipse(this.x, this.y, this.radius * 2); /////FIXED
       pop();
     }
