@@ -1,14 +1,12 @@
 "use strict";
 
-// Predator-Prey Simulation
-// by Pippin Barr
-//
-// Creates a predator and three prey (of different sizes and speeds)
-// The predator chases the prey using the arrow keys and consumes them.
-// The predator loses health over time, so must keep eating to survive.
+                                        /******
+                                "Everything was Beautiful
+                                    and Nothing Hurt."
+                                        *******/
 
 ////////////////////
-// 10 ERRORS IN HERE //MISSING 1//
+// 10 ERRORS IN HERE. Fixed by Jakob Araujo
 ////////////////////
 
 // Our predator
