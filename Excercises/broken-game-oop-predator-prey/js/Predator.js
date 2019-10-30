@@ -54,10 +54,10 @@ class Predator {
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
-      this.vy = this.speed; /////FIXED
+      this.vy = -this.speed; /////FIXED
     }
     else if (keyIsDown(this.downKey)) { /////FIXED
-      this.vy = -this.speed; /////FIXED
+      this.vy = this.speed; /////FIXED
     }
     else {
       this.vy = 0;
@@ -71,8 +71,8 @@ class Predator {
   // Handles wrapping
   move() {
     // Update position
-    this.x = this.vx;
-    this.y = this.vy;
+    this.x += this.vx; /////FIXED
+    this.y += this.vy; /////FIXED
     // Update health
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
