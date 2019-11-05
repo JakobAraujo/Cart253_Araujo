@@ -122,9 +122,21 @@ class Predator {
       if (prey.health < 0) {
         prey.reset();
       }
+      if(this.radius < 0){
+        this.reset();
+      }
     }
   }
 
+  reset() {
+    // Random position
+    this.x = random(0, width);
+    this.y = random(0, height);
+    // Default health
+    this.health = this.maxHealth;
+    // Default radius
+    this.radius = this.health;
+  }
   // display
   //
   // Draw the predator as an ellipse on the canvas

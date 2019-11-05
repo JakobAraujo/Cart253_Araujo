@@ -94,6 +94,7 @@ function draw() {
     }else{
       //Display the start screen.
       begin = 1;
+      console.log(begin);
       show.display();
     }
 }
