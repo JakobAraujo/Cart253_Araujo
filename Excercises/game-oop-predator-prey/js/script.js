@@ -1,5 +1,5 @@
 // Predator-Prey Simulation
-// by Pippin Barr
+// by Jakob Araujo.
 //
 // Creates a predator and three prey (of different sizes and speeds)
 // The predator chases the prey using the arrow keys and consumes them.
@@ -26,7 +26,7 @@ function setup() {
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
-  bush = new Bush(windowWidth / 2, windowHeight / 2, color(0, 255, 0), 90);
+  bush = new Bush(windowWidth / 2, windowHeight / 2, color(0, 255, 0), 45);
 }
 
 // draw()
@@ -65,3 +65,9 @@ function draw() {
 
 
 }
+
+/************
+If you're ever
+In Cody Wyoming
+Just ask for Wild Bob.
+************/

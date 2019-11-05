@@ -20,7 +20,7 @@ hiding(predator){ //checks if the predator is in the bush and makes them invinci
   if (d < this.radius + predator.radius) {
 
     this.occupied = 1; //1 = predator is in the bush.
-    predator.health = predator.health; //makes predator is invincible.
+    predator.health = predator.health; //makes predator invincible.
     console.log(this.occupied);
   } else {
     this.occupied = 0; //0 = predator is not in the bush.
@@ -34,7 +34,7 @@ display(){
   push();
   noStroke();
   fill(this.fillColor);
-  ellipse(this.x, this.y, this.radius);
+  ellipse(this.x, this.y, this.radius * 2);
   pop();
   }
 }
