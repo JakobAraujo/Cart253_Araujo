@@ -7,6 +7,7 @@
 
 //Start Screen
 let img;
+let show;
 
 // Our predator
 let tiger;
@@ -30,7 +31,7 @@ function preload() {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  image(img, 10, 10);
+  show = new Screen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
@@ -44,7 +45,7 @@ function setup() {
 function draw() {
   // Clear the background to black
   background(0);
-  image(img, 10, 10);
+
 
 
   // Handle input for the tiger
@@ -63,6 +64,9 @@ function draw() {
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
 
+  show.display();
+
+
   //Display the bush
   bush.display();
 
@@ -73,6 +77,8 @@ function draw() {
   bee.display();
 
   bush.hiding(tiger);
+
+
 }
 
 /************
