@@ -4,10 +4,11 @@
 // Creates a predator and three prey (of different sizes and speeds)
 // The predator chases the prey using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
-
+"use strict"
 //Start Screen
 let img; //holds the image of a tiger.
 let show; //holds the Screen class.
+let showEnd //holds the endScreen class.
 let begin = 1; //gates whether the game can begin. 1 is no, 2 is yes.
 
 // Our predator
@@ -32,6 +33,7 @@ function preload() {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  showEnd = new endScreen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img);
   show = new Screen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
@@ -48,11 +50,12 @@ function mouseClicked(){
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  if(begin >= 2){ //if the mouse is clicked "begin" inscreases to 2 and the game 
+  if(begin === 2){ //if the mouse is clicked "begin" inscreases to 2 and the game
   // Clear the background to black
   background(0);
 
-
+  showEnd.display(tiger);
+  showEnd.displayText(tiger);
 
   // Handle input for the tiger
   tiger.handleInput();
@@ -73,14 +76,14 @@ function draw() {
 
   //Display the bush
   bush.display();
+  //Handle whether the tiger is hiding in the bush.
+  bush.hiding(tiger);
+
   // Display all the "animals"
   tiger.display();
   antelope.display();
   zebra.display();
   bee.display();
-  //Handle whether the tiger is hiding in the bush.
-  bush.hiding(tiger);
-
     }else{
       begin = 1;
       background(0);
