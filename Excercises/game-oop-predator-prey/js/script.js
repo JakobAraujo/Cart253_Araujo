@@ -33,7 +33,7 @@ function preload() {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  showEnd = new endScreen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img);
+  showEnd = new endScreen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img, begin);
   show = new Screen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
@@ -44,18 +44,20 @@ function setup() {
 
 function mouseClicked(){
       begin += begin;
+      if(begin > 2){
+        begin = 1;
+      }
 }
 
 // draw()
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  if(begin === 2){ //if the mouse is clicked "begin" inscreases to 2 and the game
+
+  if(begin === 2){ //if the mouse is clicked "begin" inscreases to 2 and the game begins
+
   // Clear the background to black
   background(0);
-
-  showEnd.display(tiger);
-  showEnd.displayText(tiger);
 
   // Handle input for the tiger
   tiger.handleInput();
@@ -84,12 +86,15 @@ function draw() {
   antelope.display();
   zebra.display();
   bee.display();
+
+  showEnd.death(tiger);
+  showEnd.display(tiger);
+
+
     }else{
-      begin = 1;
-      background(0);
       //Display the start screen.
+      begin = 1;
       show.display();
-      show.displayText();
     }
 }
 
