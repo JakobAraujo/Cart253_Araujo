@@ -6,9 +6,9 @@ class Screen {
     this.x = x;
     this.y = y;
     this.tint = tintColor;
-    this.img = img
-  }
+    this.img = img;
 
+  }
 
   display(){
     push();
@@ -16,6 +16,16 @@ class Screen {
     tint(this.tint);
     image(this.img, this.x, this.y);
     pop();
+    }
+
+    displayText(){
+      push();
+      textAlign(CENTER);
+      textSize(24);
+      stroke(255);
+      fill(255);
+      text("A Veneer Over Savagery.", this.x, this.y + 150);
+      pop();
     }
 
 }

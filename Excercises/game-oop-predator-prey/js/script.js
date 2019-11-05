@@ -48,7 +48,7 @@ function mouseClicked(){
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  if(begin >= 2){
+  if(begin >= 2){ //if the mouse is clicked "begin" inscreases to 2 and the game 
   // Clear the background to black
   background(0);
 
@@ -83,9 +83,11 @@ function draw() {
 
     }else{
       begin = 1;
-  //Display the start screen.
-  show.display();
-  }
+      background(0);
+      //Display the start screen.
+      show.display();
+      show.displayText();
+    }
 }
 
 /************
