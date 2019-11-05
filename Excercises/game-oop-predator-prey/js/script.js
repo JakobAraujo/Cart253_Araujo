@@ -5,6 +5,9 @@
 // The predator chases the prey using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
 
+//Start Screen
+let img;
+
 // Our predator
 let tiger;
 
@@ -16,12 +19,18 @@ let bee;
 //The bush
 let bush;
 
+function preload() {
+  img = loadImage('assets/images/tiger.jpg');
+}
+
+
 // setup()
 //
 // Sets up a canvas
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  image(img, 10, 10);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
@@ -35,6 +44,8 @@ function setup() {
 function draw() {
   // Clear the background to black
   background(0);
+  image(img, 10, 10);
+
 
   // Handle input for the tiger
   tiger.handleInput();
@@ -62,8 +73,6 @@ function draw() {
   bee.display();
 
   bush.hiding(tiger);
-
-
 }
 
 /************
