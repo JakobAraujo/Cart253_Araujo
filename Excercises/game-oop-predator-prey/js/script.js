@@ -6,8 +6,9 @@
 // The predator loses health over time, so must keep eating to survive.
 
 //Start Screen
-let img;
-let show;
+let img; //holds the image of a tiger.
+let show; //holds the Screen class.
+let begin = 1; //gates whether the game can begin. 1 is no, 2 is yes.
 
 // Our predator
 let tiger;
@@ -39,10 +40,15 @@ function setup() {
   bush = new Bush(windowWidth / 2, windowHeight / 2, color(0, 255, 0), 45);
 }
 
+function mouseClicked(){
+      begin += begin;
+}
+
 // draw()
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
+  if(begin >= 2){
   // Clear the background to black
   background(0);
 
@@ -64,21 +70,22 @@ function draw() {
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
 
-  show.display();
-
 
   //Display the bush
   bush.display();
-
   // Display all the "animals"
   tiger.display();
   antelope.display();
   zebra.display();
   bee.display();
-
+  //Handle whether the tiger is hiding in the bush.
   bush.hiding(tiger);
 
-
+    }else{
+      begin = 1;
+  //Display the start screen.
+  show.display();
+  }
 }
 
 /************

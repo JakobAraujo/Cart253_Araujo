@@ -12,6 +12,7 @@ class Screen {
 
   display(){
     push();
+    imageMode(CENTER);
     tint(this.tint);
     image(this.img, this.x, this.y);
     pop();
