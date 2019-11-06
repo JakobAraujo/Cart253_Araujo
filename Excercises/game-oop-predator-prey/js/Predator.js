@@ -10,7 +10,7 @@ class Predator {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, fillColor, radius) {
+  constructor(x, y, speed, fillColor, radius, begin) {
     // Position
     this.x = x;
     this.y = y;
@@ -31,6 +31,8 @@ class Predator {
     this.downKey = DOWN_ARROW;
     this.leftKey = LEFT_ARROW;
     this.rightKey = RIGHT_ARROW;
+
+    this.begin = begin;
   }
 
   // handleInput
@@ -122,9 +124,12 @@ class Predator {
       if (prey.health < 0) {
         prey.reset();
       }
-      if(this.radius < 0){
-        this.reset();
-      }
+    }
+  }
+
+  death(){ //handles if the predator has died.
+    if(this.radius < 0){
+      this.reset();
     }
   }
 
@@ -132,11 +137,21 @@ class Predator {
     // Random position
     this.x = random(0, width);
     this.y = random(0, height);
-    // Default health
-    this.health = this.maxHealth;
-    // Default radius
-    this.radius = this.health;
+
+
+    this.begin = 3;
+    if(this.begin === 3){
+      function mouseClicked(){
+      // Default health
+      this.health = this.maxHealth;
+      // Default radius
+      this.radius = this.health;
+      this.begin = begin;
+      }
+    }
   }
+
+
   // display
   //
   // Draw the predator as an ellipse on the canvas

@@ -21,12 +21,10 @@ hiding(predator){ //checks if the predator is in the bush and makes them invinci
 
     this.occupied = 1; //1 = predator is in the bush.
     predator.health = predator.health; //makes predator invincible.
-    console.log(this.occupied);
   } else {
     this.occupied = 0; //0 = predator is not in the bush.
     predator.health = predator.health - predator.healthLossPerMove; // makes the predator shrink with their health.
     predator.health = constrain(predator.health, 0, predator.maxHealth);
-    console.log(this.occupied);
   }
 }
 

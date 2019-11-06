@@ -35,7 +35,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   showEnd = new endScreen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img, begin);
   show = new Screen (windowWidth / 2, windowHeight / 2, color(150, 0 ,0), img);
-  tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
+  tiger = new Predator(100, 100, 5, color(200, 200, 0), 40, begin);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
@@ -43,17 +43,14 @@ function setup() {
 }
 
 function mouseClicked(){
-      begin += begin;
-      if(begin > 2){
-        begin = 1;
-      }
+      begin = 2;
 }
 
 // draw()
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-
+  console.log(begin);
   if(begin === 2){ //if the mouse is clicked "begin" inscreases to 2 and the game begins
 
   // Clear the background to black
@@ -62,7 +59,7 @@ function draw() {
   // Handle input for the tiger
   tiger.handleInput();
 
-
+  tiger.death();
 
   // Move all the "animals"
   tiger.move(bush);
@@ -93,9 +90,9 @@ function draw() {
 
     }else{
       //Display the start screen.
-      begin = 1;
       console.log(begin);
       show.display();
+      console.log(begin);
     }
 }
 

@@ -9,13 +9,13 @@ class endScreen extends Screen{
     death(predator){
     if(this.begin > 1){
       if(predator.radius <= 0){
-        noLoop();
+        //noLoop();
       }
     }
   }
 
     display(predator){
-    if(predator.radius <= 0){
+    if(predator.begin === 3){
       push();
       background(0);
       textAlign(CENTER);
@@ -28,7 +28,7 @@ class endScreen extends Screen{
       tint(this.tint);
       image(this.img, this.x, this.y);
       pop();
-
+      noLoop();
     }
   }
 }
