@@ -10,7 +10,7 @@ author, and this description to match your project!
 
 ******************/
 let playerX = 69;
-let playerY = 69;
+let playerY
 let playerR = 69;
 let playerS = 5;
 //let playerV = 5;
@@ -35,6 +35,8 @@ function preload() {
 
 function setup() {
 createCanvas(windowWidth, windowHeight);
+playerY = windowHeight / 2;
+
 
 playerChar = new Player (playerS, playerX, playerY, playerR);
 }
