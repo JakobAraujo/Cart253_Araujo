@@ -1,9 +1,9 @@
 "use strict";
 
 class Player {
-  constructor (s, v, x, y, radius) {
+  constructor (s, x, y, radius) {
     this.speed = s;
-    this.velocity = v;
+    this.velocity = this.speed;
     this.x = x;
     this.y = y;
     this.radius = radius;
@@ -14,12 +14,19 @@ class Player {
     if(keyIsDown(this.spaceKey)){
       this.velocity = 0;
     } else {
-      this.velocity = 5;
-      this.x = this.x + this.velocity;
+      this.velocity = this.speed;
+      this.x += this.velocity;
+    }
+  }
+
+  screenWrap(){
+    if(this.x > windowWidth){
+      this.x += -windowWidth;
     }
   }
 
   display(){
+    ellipseMode(CENTER);
     fill(255, 0, 50);
     ellipse (this.x, this.y, this.radius);
   }

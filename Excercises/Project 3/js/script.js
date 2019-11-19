@@ -13,7 +13,7 @@ let playerX = 69;
 let playerY = 69;
 let playerR = 69;
 let playerS = 5;
-let playerV = 5;
+//let playerV = 5;
 
 let enemyS;
 let enemyV;
@@ -36,7 +36,7 @@ function preload() {
 function setup() {
 createCanvas(windowWidth, windowHeight);
 
-playerChar = new Player (playerS, playerV, playerX, playerY, playerR);
+playerChar = new Player (playerS, playerX, playerY, playerR);
 }
 
 
@@ -50,6 +50,7 @@ function draw() {
 
   playerChar.movement();
   playerChar.display();
+  playerChar.screenWrap();
 
 
 }
