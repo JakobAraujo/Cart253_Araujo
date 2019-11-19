@@ -9,12 +9,16 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 
 ******************/
-let playerS;
-let playerV;
+let playerX = 69;
+let playerY = 69;
+let playerR = 69;
+let playerS = 5;
+let playerV = 5;
 
 let enemyS;
 let enemyV;
 
+let playerChar;
 
 // preload()
 //
@@ -30,7 +34,9 @@ function preload() {
 // Description of setup
 
 function setup() {
+createCanvas(windowWidth, windowHeight);
 
+playerChar = new Player (playerS, playerV, playerX, playerY, playerR);
 }
 
 
@@ -39,5 +45,11 @@ function setup() {
 // Description of draw()
 
 function draw() {
+  background (0);
+
+
+  playerChar.movement();
+  playerChar.display();
+
 
 }
