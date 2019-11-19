@@ -58,8 +58,8 @@ function draw() {
 
   // Handle input for the tiger
   tiger.handleInput();
-
-  tiger.death();
+  //tiger.reset();
+  tiger.death(endScreen);
 
   // Move all the "animals"
   tiger.move(bush);
@@ -84,7 +84,6 @@ function draw() {
   zebra.display();
   bee.display();
 
-  showEnd.death(tiger);
   showEnd.display(tiger);
 
 

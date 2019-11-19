@@ -127,9 +127,17 @@ class Predator {
     }
   }
 
-  death(){ //handles if the predator has died.
-    if(this.radius < 0){
-      this.reset();
+  death(endScreen){ //handles if the predator has died.
+    if(this.radius <= 1){
+      this.begin = 3;
+      console.log(this.begin);
+      if(this.begin === 3){
+        function mouseClicked(){
+        this.begin = begin;
+        this.reset();
+        endScreen.display();
+        }
+      }
     }
   }
 
@@ -137,18 +145,11 @@ class Predator {
     // Random position
     this.x = random(0, width);
     this.y = random(0, height);
-
-
-    this.begin = 3;
-    if(this.begin === 3){
-      function mouseClicked(){
-      // Default health
-      this.health = this.maxHealth;
-      // Default radius
-      this.radius = this.health;
-      this.begin = begin;
-      }
-    }
+    // Default health
+    this.health = this.maxHealth;
+    // Default radius
+    this.radius = this.health;
+    this.begin = begin;
   }
 
 
